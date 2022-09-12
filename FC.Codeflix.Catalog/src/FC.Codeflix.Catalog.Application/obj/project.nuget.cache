@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "3p48lwCxW6fhixIVE02HwzFbZUVcemukbTTPW5nT/8HHqJmcJYCCdx2cBdM1iAduDFsWgE96ahDJpUNRjmF/Hw==",
+  "success": true,
+  "projectFilePath": "C:\\Daniel\\Fullcycle\\ProjetoDotNet\\FC.Codeflix.Catalog\\src\\FC.Codeflix.Catalog.Application\\FC.Codeflix.Catalog.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dkrep\\.nuget\\packages\\fluentvalidation\\11.2.2\\fluentvalidation.11.2.2.nupkg.sha512",
+    "C:\\Users\\dkrep\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\dkrep\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
