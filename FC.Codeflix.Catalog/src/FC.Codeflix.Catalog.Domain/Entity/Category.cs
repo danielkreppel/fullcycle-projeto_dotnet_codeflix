@@ -33,7 +33,7 @@ namespace FC.Codeflix.Catalog.Domain.Entity
             IsActive = false;
             Validate();
         }
-        public void Update(string name, string description = null)
+        public void Update(string name, string? description = null)
         {
             Name = name;
             Description = description ?? Description;

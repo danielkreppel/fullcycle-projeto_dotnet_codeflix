@@ -1,6 +1,4 @@
-﻿using FC.Codeflix.Catalog.UnitTests.Application.CreateCategory;
-
-namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category
+﻿namespace FC.Codeflix.Catalog.UnitTests.Application.CreateCategory
 {
     public class CreateCategoryTestDataGenerator
     {
@@ -12,7 +10,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category
 
             for (int i = 0; i < times; i++)
             {
-                switch(i % totalInvalidCases)
+                switch (i % totalInvalidCases)
                 {
                     case 0:
                         invalidInputs.Add(new object[] { fixture.GetInvalidInputShortName(), "Name should be at least 3 characters long" });

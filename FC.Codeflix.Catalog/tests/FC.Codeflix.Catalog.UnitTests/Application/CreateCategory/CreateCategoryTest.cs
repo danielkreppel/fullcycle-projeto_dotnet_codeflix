@@ -7,7 +7,6 @@ using FluentAssertions;
 using FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
 using FC.Codeflix.Catalog.Domain.Exceptions;
 using Bogus.DataSets;
-using FC.Codeflix.Catalog.UnitTests.Domain.Entity.Category;
 
 namespace FC.Codeflix.Catalog.UnitTests.Application.CreateCategory
 {

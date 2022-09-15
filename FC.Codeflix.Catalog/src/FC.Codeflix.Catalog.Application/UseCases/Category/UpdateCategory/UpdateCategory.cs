@@ -24,9 +24,9 @@ namespace FC.Codeflix.Catalog.Application.UseCases.Category.UpdateCategory
         {
             var category = await _categoryRepository.Get(request.Id, cancellationToken);
             category.Update(request.Name, request.Description);
-            if (request.IsActive != category.IsActive)
+            if (request.IsActive != null && request.IsActive != category.IsActive)
             {
-                if (request.IsActive)
+                if ((bool)request.IsActive!)
                     category.Activate();
                 else
                     category.Deactivate();
