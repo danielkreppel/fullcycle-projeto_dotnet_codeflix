@@ -1,7 +1,5 @@
 # Dotnet project from Fullcycle practice course
 
-## *Main topics*
-
 ### Dotnet core 6
 ### DDD approach (Domain-Driven Design)
 
