@@ -8,7 +8,7 @@ using FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
 using FC.Codeflix.Catalog.Domain.Exceptions;
 using Bogus.DataSets;
 
-namespace FC.Codeflix.Catalog.UnitTests.Application.CreateCategory
+namespace FC.Codeflix.Catalog.UnitTests.Application.Category.CreateCategory
 {
     [Collection(nameof(CreateCategoryTestFixture))]
     public class CreateCategoryTest
@@ -44,7 +44,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.CreateCategory
             output.Description.Should().Be(input.Description);
             output.IsActive.Should().Be(input.IsActive);
             output.Id.Should().NotBeEmpty();
-            output.CreatedAt.Should().NotBeSameDateAs(default(DateTime));
+            output.CreatedAt.Should().NotBeSameDateAs(default);
         }
 
         [Fact(DisplayName = nameof(CreateCategoryWithOnlyName))]
@@ -71,7 +71,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.CreateCategory
             output.Description.Should().Be("");
             output.IsActive.Should().Be(true);
             output.Id.Should().NotBeEmpty();
-            output.CreatedAt.Should().NotBeSameDateAs(default(DateTime));
+            output.CreatedAt.Should().NotBeSameDateAs(default);
         }
 
         [Fact(DisplayName = nameof(CreateCategoryWithOnlyNameAndDescription))]
@@ -98,13 +98,13 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.CreateCategory
             output.Description.Should().Be(input.Description);
             output.IsActive.Should().Be(true);
             output.Id.Should().NotBeEmpty();
-            output.CreatedAt.Should().NotBeSameDateAs(default(DateTime));
+            output.CreatedAt.Should().NotBeSameDateAs(default);
         }
 
         [Theory(DisplayName = nameof(ThrownWhenCantInstantiateCategory))]
         [Trait("Application", "CreateCategory - Use Cases")]
-        [MemberData(nameof(CreateCategoryTestDataGenerator.GetInvalidInputs), 
-            parameters:24, 
+        [MemberData(nameof(CreateCategoryTestDataGenerator.GetInvalidInputs),
+            parameters: 24,
             MemberType = typeof(CreateCategoryTestDataGenerator))]
         public async Task ThrownWhenCantInstantiateCategory(CreateCategoryInput input, string exceptionMessage)
         {

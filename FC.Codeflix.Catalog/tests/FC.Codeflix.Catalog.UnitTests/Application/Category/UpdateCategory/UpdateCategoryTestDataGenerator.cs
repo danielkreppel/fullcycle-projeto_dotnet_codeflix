@@ -1,12 +1,5 @@
-﻿using FC.Codeflix.Catalog.Application.UseCases.Category.UpdateCategory;
-using FC.Codeflix.Catalog.UnitTests.Application.CreateCategory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FC.Codeflix.Catalog.UnitTests.Application.UpdateCategory
+﻿
+namespace FC.Codeflix.Catalog.UnitTests.Application.Category.UpdateCategory
 {
     public class UpdateCategoryTestDataGenerator
     {
@@ -15,7 +8,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.UpdateCategory
             var fixture = new UpdateCategoryTestFixture();
             for (int i = 0; i < times; i++)
             {
-                var categorySample = fixture.GetCategorySample();
+                var categorySample = fixture.GetValidCategorySample();
                 var inputSample = fixture.GetValidInput(categorySample.Id);
 
                 yield return new object[] { categorySample, inputSample };

@@ -1,13 +1,12 @@
-﻿using FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
-using FC.Codeflix.Catalog.Domain.Entity;
+﻿using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
+using FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
 using FluentAssertions;
 using Moq;
+using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
-using System.Linq;
-using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
 
-namespace FC.Codeflix.Catalog.UnitTests.Application.ListCategories
+namespace FC.Codeflix.Catalog.UnitTests.Application.Category.ListCategories
 {
     [Collection(nameof(ListCategoriesTestFixture))]
     public class ListCategoryTest
@@ -25,11 +24,11 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.ListCategories
             var categoriesListSample = _fixture.GetListGategoriesSample();
             var repositoryMock = _fixture.GetRepositoryMock();
             var input = _fixture.GetInputSample();
-            var outputRepositorySearch = new SearchOutput<Category>(
+            var outputRepositorySearch = new SearchOutput<DomainEntity.Category>(
                     currentPage: input.Page,
                     perPage: input.PerPage,
-                    items: (IReadOnlyList<Category>)categoriesListSample,
-                    total: (new Random()).Next(50, 200)
+                    items: (IReadOnlyList<DomainEntity.Category>)categoriesListSample,
+                    total: new Random().Next(50, 200)
                 );
 
             repositoryMock.Setup(x => x.Search(
@@ -52,14 +51,14 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.ListCategories
             output.PerPage.Should().Be(outputRepositorySearch.PerPage);
             output.Total.Should().Be(outputRepositorySearch.Total);
             output.Items.Should().HaveCount(outputRepositorySearch.Items.Count);
-            ((List<CategoryModelOutput>)(output.Items)).ForEach(outputItem =>
+            ((List<CategoryModelOutput>)output.Items).ForEach(outputItem =>
             {
                 var repositoryCategory = outputRepositorySearch.Items.FirstOrDefault(x => x.Id == outputItem.Id);
                 outputItem.Should().NotBeNull();
                 outputItem.Name.Should().Be(repositoryCategory!.Name);
                 outputItem.Description.Should().Be(repositoryCategory!.Description);
                 outputItem.IsActive.Should().Be(repositoryCategory!.IsActive);
-                outputItem.Id.Should().Be((repositoryCategory!.Id));
+                outputItem.Id.Should().Be(repositoryCategory!.Id);
                 outputItem.CreatedAt.Should().Be(repositoryCategory!.CreatedAt);
             });
 
@@ -87,11 +86,11 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.ListCategories
             var categoriesListSample = _fixture.GetListGategoriesSample();
             var repositoryMock = _fixture.GetRepositoryMock();
 
-            var outputRepositorySearch = new SearchOutput<Category>(
+            var outputRepositorySearch = new SearchOutput<DomainEntity.Category>(
                     currentPage: input.Page,
                     perPage: input.PerPage,
-                    items: (IReadOnlyList<Category>)categoriesListSample,
-                    total: (new Random()).Next(50, 200)
+                    items: (IReadOnlyList<DomainEntity.Category>)categoriesListSample,
+                    total: new Random().Next(50, 200)
                 );
 
             repositoryMock.Setup(x => x.Search(
@@ -114,14 +113,14 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.ListCategories
             output.PerPage.Should().Be(outputRepositorySearch.PerPage);
             output.Total.Should().Be(outputRepositorySearch.Total);
             output.Items.Should().HaveCount(outputRepositorySearch.Items.Count);
-            ((List<CategoryModelOutput>)(output.Items)).ForEach(outputItem =>
+            ((List<CategoryModelOutput>)output.Items).ForEach(outputItem =>
             {
                 var repositoryCategory = outputRepositorySearch.Items.FirstOrDefault(x => x.Id == outputItem.Id);
                 outputItem.Should().NotBeNull();
                 outputItem.Name.Should().Be(repositoryCategory!.Name);
                 outputItem.Description.Should().Be(repositoryCategory!.Description);
                 outputItem.IsActive.Should().Be(repositoryCategory!.IsActive);
-                outputItem.Id.Should().Be((repositoryCategory!.Id));
+                outputItem.Id.Should().Be(repositoryCategory!.Id);
                 outputItem.CreatedAt.Should().Be(repositoryCategory!.CreatedAt);
             });
 
@@ -144,10 +143,10 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.ListCategories
             var categoriesListSample = _fixture.GetListGategoriesSample();
             var repositoryMock = _fixture.GetRepositoryMock();
             var input = _fixture.GetInputSample();
-            var outputRepositorySearch = new SearchOutput<Category>(
+            var outputRepositorySearch = new SearchOutput<DomainEntity.Category>(
                     currentPage: input.Page,
                     perPage: input.PerPage,
-                    items: (new List<Category>()).AsReadOnly(),
+                    items: new List<DomainEntity.Category>().AsReadOnly(),
                     total: 0
                 );
 
