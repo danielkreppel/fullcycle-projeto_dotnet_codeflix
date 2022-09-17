@@ -6,11 +6,11 @@
 ### DDD approach (Domain-Driven Design)
 
 ### Unit Tests layer
-### TDD process (Test Driven Development  = test cases first) using these packages:
-1. XUnit
-2. Bogus
-3. FluentAssertions
-4. Moq
+1. TDD process (Test Driven Development  = test cases first) using these packages:
+1.1. XUnit
+1.2. Bogus
+1.3. FluentAssertions
+1.4. Moq
 
 ###  Application Layer using these packages:
 1. FluentValidation
