@@ -1,17 +1,17 @@
 # Dotnet project from Fullcycle practice course
 
-## Main topics
+## *Main topics*
 
-## Dotnet core 6
-## DDD approach (Domain-Driven Design)
+### Dotnet core 6
+### DDD approach (Domain-Driven Design)
 
-## Unit Tests layer
+### Unit Tests layer
 ### TDD process (Test Driven Development  = test cases first) using these packages:
-#### XUnit
-#### Bogus
-#### FluentAssertions
-#### Moq
+1. XUnit
+2. Bogus
+3. FluentAssertions
+4. Moq
 
-##  Application Layer using these packages:
-### FluentValidation
-### MediatR
+###  Application Layer using these packages:
+1. FluentValidation
+2. MediatR
