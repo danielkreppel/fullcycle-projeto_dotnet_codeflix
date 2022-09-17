@@ -1,7 +1,6 @@
-﻿using FC.Codeflix.Catalog.Application.UseCases.Category.GetCategory;
-using FluentValidation;
+﻿using FluentValidation;
 
-namespace FC.Codeflix.Catalog.Application.UseCases.Category
+namespace FC.Codeflix.Catalog.Application.UseCases.Category.GetCategory
 {
     public class GetCategoryInputValidator : AbstractValidator<GetCategoryInput>
     {
