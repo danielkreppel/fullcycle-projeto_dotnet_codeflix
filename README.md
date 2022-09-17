@@ -1,7 +1,7 @@
 # Dotnet project from Fullcycle practice course
 
 ### Dotnet core 6
-### DDD approach (Domain-Driven Design)
+### DDD approach (Domain-Driven Design) and Clean Architecture
 1. Domain (Enterprise Business Rules)
 2. Use Cases (Application Business Rules)
 3. Infrasctucture (Interface Adapters: Intermediate the communication from internal layers to the external layers and vice-versa, adapting data accordingly)
