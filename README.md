@@ -15,6 +15,7 @@
 2. Bogus
 3. FluentAssertions
 4. Moq
+5. Microsoft.EntityFrameworkCore.InMemory (In-memory database provider for EF to be used for testing purposes)
 
 ###  Application Layer using these packages:
 1. FluentValidation
