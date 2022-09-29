@@ -1,9 +1,7 @@
-﻿using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
-using FC.Codeflix.Catalog.IntegrationTests.Base;
-using FC.Codeflix.Category.Infra.Data.EF;
-using Microsoft.EntityFrameworkCore;
+﻿using Bogus;
 using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
-using Bogus;
+using FC.Codeflix.Catalog.IntegrationTests.Base;
+using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
 namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Repositories.CategoryRepository
 {
@@ -75,18 +73,5 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Repositories.Catego
             return orderedEnumerable.ToList();
         }
 
-        public CodeflixCatalogDbContext CreateDbContextSample(bool preserveData = false)
-        {
-            var dbContext = new CodeflixCatalogDbContext(
-                    new DbContextOptionsBuilder<CodeflixCatalogDbContext>()
-                    .UseInMemoryDatabase("Integration-tests-db")
-                    .Options
-                );
-
-            if (!preserveData)
-                dbContext.Database.EnsureDeleted();
-
-            return dbContext;
-        }
     }
 }

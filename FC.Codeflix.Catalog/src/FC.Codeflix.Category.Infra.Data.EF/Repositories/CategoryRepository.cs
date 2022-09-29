@@ -32,7 +32,7 @@ namespace FC.Codeflix.Category.Infra.Data.EF.Repositories
             //Set as no tracking so EF doesn't save changes for entities returned only for searching pusporses
             var category = await _categories.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
 
-            NotFoundException.ThrowIfNull(category, $"Category {id} not found");
+            NotFoundException.ThrowIfNull(category, $"Category '{id}' not found");
 
             return category!;
         }

@@ -78,7 +78,7 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Repositories.Catego
 
             await task.Should()
                 .ThrowAsync<NotFoundException>()
-                .WithMessage($"Category {exampleId} not found");
+                .WithMessage($"Category '{exampleId}' not found");
         }
 
         [Fact(DisplayName = nameof(Update))]
