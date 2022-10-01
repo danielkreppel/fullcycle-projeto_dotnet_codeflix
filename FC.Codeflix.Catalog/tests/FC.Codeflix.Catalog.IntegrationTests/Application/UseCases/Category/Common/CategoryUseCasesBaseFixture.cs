@@ -40,5 +40,6 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Com
             return Enumerable.Range(0, length)
                 .Select(_ => GetValidCategorySample()).ToList();
         }
+
     }
 }
