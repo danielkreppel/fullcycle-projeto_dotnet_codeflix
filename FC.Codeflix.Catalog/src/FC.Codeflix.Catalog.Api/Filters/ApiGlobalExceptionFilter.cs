@@ -1,4 +1,5 @@
-﻿using FC.Codeflix.Catalog.Domain.Exceptions;
+﻿using FC.Codeflix.Catalog.Application.Exceptions;
+using FC.Codeflix.Catalog.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -30,6 +31,13 @@ namespace FC.Codeflix.Catalog.Api.Filters
                 details.Status = StatusCodes.Status422UnprocessableEntity;
                 details.Type = "UnprocessableEntity";
                 details.Detail = ex!.Message;
+            }
+            else if (exception is NotFoundException)
+            {
+                details.Title = "Not Found";
+                details.Status = StatusCodes.Status404NotFound;
+                details.Type = "NotFound";
+                details.Detail = exception.Message;
             }
             else
             {
