@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.CreateCategory
 {
     [Collection(nameof(CreateCategoryApiTestFixture))]
-    public class CreateCategoryApiTest
+    public class CreateCategoryApiTest : IDisposable
     {
         private readonly CreateCategoryApiTestFixture _fixture;
 
@@ -61,6 +61,11 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.CreateCategory
             output.Type.Should().Be("UnprocessableEntity");
             output.Status.Should().Be(StatusCodes.Status422UnprocessableEntity);
             output.Detail.Should().Be(expectedDetail);
+        }
+
+        public void Dispose()
+        {
+            _fixture.CleanPersistence();
         }
     }
 }

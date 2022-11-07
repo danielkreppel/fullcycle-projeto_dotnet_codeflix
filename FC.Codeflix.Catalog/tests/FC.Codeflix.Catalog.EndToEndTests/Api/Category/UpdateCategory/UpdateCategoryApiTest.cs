@@ -118,5 +118,30 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             output.Detail.Should().Be($"Category '{randomGuid}' not found");
             output.Status.Should().Be((int)StatusCodes.Status404NotFound);
         }
+
+        [Theory(DisplayName = nameof(ErrorWhenCantInstantiateAggregate))]
+        [Trait("EndToEnd/API", "Category/Update - Endpoints")]
+        [MemberData(
+            nameof(UpdateCategoryApiTestDataGenerator.GetInvalidInputs), 
+            MemberType = typeof(UpdateCategoryApiTestDataGenerator))
+        ]
+        public async Task ErrorWhenCantInstantiateAggregate(UpdateCategoryInput input, string expectedDetail)
+        {
+            var categoriesListSample = _fixture.GetCategoriesListSample(20);
+            await _fixture.Persistence.InsertList(categoriesListSample);
+            var exampleCategory = categoriesListSample[10];
+            input.Id = exampleCategory.Id;
+
+            var (response, output) = await _fixture.ApiClient.Put<ProblemDetails>($"/Categories/{exampleCategory.Id}", input);
+
+            response.Should().NotBeNull();
+            response.StatusCode.Should().Be((HttpStatusCode)StatusCodes.Status422UnprocessableEntity);
+
+            output.Should().NotBeNull();
+            output!.Title.Should().Be("One or more validation errors occurred");
+            output.Type.Should().Be("UnprocessableEntity");
+            output.Detail.Should().Be(expectedDetail);
+            output.Status.Should().Be((int)StatusCodes.Status422UnprocessableEntity);
+        }
     }
 }

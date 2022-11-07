@@ -30,5 +30,14 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Base
 
             return dbContext;
         }
+
+        public CodeflixCatalogDbContext CleanPersistence()
+        {
+            var dbContext = CreateDbContextSample();
+            dbContext.Database.EnsureDeleted();
+            dbContext.Database.EnsureCreated();
+
+            return dbContext;
+        }
     }
 }

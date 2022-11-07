@@ -2,7 +2,9 @@ using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
 using FC.Codeflix.Catalog.Application.UseCases.Category.CreateCategory;
 using FC.Codeflix.Catalog.Application.UseCases.Category.DeleteCategory;
 using FC.Codeflix.Catalog.Application.UseCases.Category.GetCategory;
+using FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 using FC.Codeflix.Catalog.Application.UseCases.Category.UpdateCategory;
+using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +42,29 @@ namespace FC.Codeflix.Catalog.Api.Controllers
             return Ok(output);
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(ListCategoriesOutput), StatusCodes.Status200OK)]
+        public async Task<IActionResult> List(
+            CancellationToken cancellationToken,
+            [FromQuery] int? page = null, 
+            [FromQuery] int? perPage = null, 
+            [FromQuery] string? search = null,
+            [FromQuery] string? sortBy = null,
+            [FromQuery] SearchOrder? sortDir = null
+            )
+        {
+            var input = new ListCategoriesInput();
+            if (page is not null) input.Page = page.Value;
+            if (perPage is not null) input.PerPage = perPage.Value;
+            if (!String.IsNullOrWhiteSpace(search)) input.Search = search ;
+            if (!String.IsNullOrWhiteSpace(sortBy)) input.SortBy = sortBy;
+            if (sortDir is not null) input.SortDir = sortDir.Value;
+
+            var output = await _mediator.Send(input, cancellationToken);
+
+            return Ok(output);
+        }
+
         [HttpDelete("{id:guid}")]
         [ProducesResponseType(typeof(CategoryModelOutput), StatusCodes.Status204NoContent)]
         public async Task<IActionResult> Delete([FromRoute] Guid id, CancellationToken cancellationToken)
@@ -52,6 +77,7 @@ namespace FC.Codeflix.Catalog.Api.Controllers
         [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(CategoryModelOutput), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status422UnprocessableEntity)]
         public async Task<IActionResult> Update([FromBody] UpdateCategoryInput input, CancellationToken cancellationToken)
         {
             var output = await _mediator.Send(input, cancellationToken);
