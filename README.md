@@ -21,3 +21,9 @@
 ###  Application Layer using these packages:
 1. FluentValidation
 2. MediatR (Decouple the external layers from the internal layers)
+
+### Docker
+1. 1 Container for the API
+2. 1 Container for the Test DataBase (MySql)
+3. 1 Container for the Development DataBase (MySql)
+4. Run "docker network create -d bridge service_catalog" (So the API container finds the DB Container. Setup in docker-compose.yml)
