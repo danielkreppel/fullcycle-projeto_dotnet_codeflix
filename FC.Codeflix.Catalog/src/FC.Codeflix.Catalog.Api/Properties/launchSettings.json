@@ -22,8 +22,9 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
-      "publishAllPorts": false,
-      "useSSL": true
+      "publishAllPorts": true,
+      "useSSL": true,
+      "DockerfileRunArguments": "--network service_catalog"
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",
