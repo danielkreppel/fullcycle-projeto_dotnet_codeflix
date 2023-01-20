@@ -4,8 +4,9 @@
 ### DDD approach (Domain-Driven Design) and Clean Architecture
 1. Domain (Enterprise Business Rules)
 2. Use Cases (Application Business Rules)
-3. Infrasctucture (Interface Adapters: Intermediate the communication from internal layers to the external layers and vice-versa, adapting data accordingly)
+3. Infrastructure (Interface Adapters: Intermediate the communication from internal layers to the external layers and vice-versa, adapting data accordingly)
 4. Tests
+5. API
 
 ![image](https://user-images.githubusercontent.com/31414164/190870678-e2733f30-9d77-4079-8d03-cf3e0c9cb0ed.png)
 
@@ -31,3 +32,4 @@
 ### Persistence
 1. MySql Database
 2. Entity Framework Core (https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
+3. Migrations in API project. Example to add new migrations: dotnet ef migrations add <name> -s .\FC.Codeflix.Catalog.Api\
