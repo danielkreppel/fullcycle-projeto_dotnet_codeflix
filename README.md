@@ -36,4 +36,6 @@
 ### Persistence
 1. MySql Database
 2. Entity Framework Core (https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
-3. Migrations in API project. Example to add new migrations: dotnet ef migrations add \<name\> -s .\FC.Codeflix.Catalog.Api\ -p .\FC.Codeflix.Catalog.Infra.Data.EF\ -v
+3. Migrations in API project. Example to add new migrations: 
+3.1. First setup the environment for the app settings running: $env:ASPNETCORE_ENVIRONMENT='Migrations'
+3.2. Then run: dotnet ef migrations add \<name\> -s .\FC.Codeflix.Catalog.Api\ -p .\FC.Codeflix.Catalog.Infra.Data.EF\ -v
