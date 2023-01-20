@@ -4,8 +4,9 @@
 ### DDD approach (Domain-Driven Design) and Clean Architecture
 1. Domain (Enterprise Business Rules)
 2. Use Cases (Application Business Rules)
-3. Infrasctucture (Interface Adapters: Intermediate the communication from internal layers to the external layers and vice-versa, adapting data accordingly)
+3. Infrastructure (Interface Adapters: Intermediate the communication from internal layers to the external layers and vice-versa, adapting data accordingly)
 4. Tests
+5. API
 
 ![image](https://user-images.githubusercontent.com/31414164/190870678-e2733f30-9d77-4079-8d03-cf3e0c9cb0ed.png)
 
@@ -21,3 +22,21 @@
 ###  Application Layer using these packages:
 1. FluentValidation
 2. MediatR (Decouple the external layers from the internal layers)
+
+### Docker
+1. 1 Container for the API
+2. 1 Container for the Test DataBase (MySql)
+3. 1 Container for the Development DataBase (MySql)
+4. Run "docker network create -d bridge service_catalog" (So the API container finds the DB Container. Setup in docker-compose.yml)
+5. Few usefull Docker commands:
+- docker-compose up
+- docker ps
+6. To check the containers running in Visual Studio: View -> Other Windows -> Containers
+
+### Persistence
+1. MySql Database
+2. Entity Framework Core (https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
+3. Migrations in API project. Example to add new migrations: 
+- \IMPORTANT! First setup the environment for the app settings running: $env:ASPNETCORE_ENVIRONMENT='Migrations' (to use appsettings.Migrations.json which set the server or container as localhost)
+- Then create the migrations: dotnet ef migrations add \<name\> -s .\FC.Codeflix.Catalog.Api\ -p .\FC.Codeflix.Catalog.Infra.Data.EF\ -v
+- To update the database with the latest migrations:  dotnet ef database update -s .\FC.Codeflix.Catalog.Api\ -p .\FC.Codeflix.Catalog.Infra.Data.EF\
