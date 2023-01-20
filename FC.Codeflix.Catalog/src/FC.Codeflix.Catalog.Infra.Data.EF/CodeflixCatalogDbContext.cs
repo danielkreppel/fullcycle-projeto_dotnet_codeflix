@@ -1,8 +1,8 @@
-﻿using FC.Codeflix.Category.Infra.Data.EF.Configurations;
+﻿using FC.Codeflix.Catalog.Infra.Data.EF.Configurations;
 using Microsoft.EntityFrameworkCore;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
-namespace FC.Codeflix.Category.Infra.Data.EF
+namespace FC.Codeflix.Catalog.Infra.Data.EF
 {
     public class CodeflixCatalogDbContext : DbContext
     {

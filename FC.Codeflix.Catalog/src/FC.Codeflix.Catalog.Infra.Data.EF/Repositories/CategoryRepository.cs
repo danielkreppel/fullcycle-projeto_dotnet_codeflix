@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
 
-namespace FC.Codeflix.Category.Infra.Data.EF.Repositories
+namespace FC.Codeflix.Catalog.Infra.Data.EF.Repositories
 {
     public class CategoryRepository : ICategoryRepository
     {

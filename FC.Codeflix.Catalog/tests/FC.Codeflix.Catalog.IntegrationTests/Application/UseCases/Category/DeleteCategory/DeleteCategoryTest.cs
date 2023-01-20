@@ -1,6 +1,6 @@
 ﻿using FC.Codeflix.Catalog.Application.Exceptions;
-using FC.Codeflix.Category.Infra.Data.EF;
-using FC.Codeflix.Category.Infra.Data.EF.Repositories;
+using FC.Codeflix.Catalog.Infra.Data.EF;
+using FC.Codeflix.Catalog.Infra.Data.EF.Repositories;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestPlatform.Utilities;

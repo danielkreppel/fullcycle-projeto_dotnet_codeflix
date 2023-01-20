@@ -1,8 +1,8 @@
 ﻿using FC.Codeflix.Catalog.Application.Exceptions;
 using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
-using FC.Codeflix.Category.Infra.Data.EF;
+using FC.Codeflix.Catalog.Infra.Data.EF;
 using FluentAssertions;
-using Repository = FC.Codeflix.Category.Infra.Data.EF.Repositories;
+using Repository = FC.Codeflix.Catalog.Infra.Data.EF.Repositories;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
 namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.Repositories.CategoryRepository

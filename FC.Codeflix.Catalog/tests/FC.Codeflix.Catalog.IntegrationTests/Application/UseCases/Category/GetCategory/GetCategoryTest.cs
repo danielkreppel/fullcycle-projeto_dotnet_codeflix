@@ -1,5 +1,5 @@
 ﻿using FC.Codeflix.Catalog.Application.Exceptions;
-using FC.Codeflix.Category.Infra.Data.EF.Repositories;
+using FC.Codeflix.Catalog.Infra.Data.EF.Repositories;
 using FluentAssertions;
 using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.GetCategory;
 

@@ -2,7 +2,7 @@
 using FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
 using FC.Codeflix.Catalog.EndToEndTests.Extensions.DateTime;
-using FC.Codeflix.Category.Infra.Data.EF;
+using FC.Codeflix.Catalog.Infra.Data.EF;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;

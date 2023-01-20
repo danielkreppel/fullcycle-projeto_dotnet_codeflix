@@ -1,4 +1,4 @@
-﻿using FC.Codeflix.Category.Infra.Data.EF;
+﻿using FC.Codeflix.Catalog.Infra.Data.EF;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;

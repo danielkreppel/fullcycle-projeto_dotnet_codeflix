@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using UnitOfWorkInfra = FC.Codeflix.Category.Infra.Data.EF;
+using UnitOfWorkInfra = FC.Codeflix.Catalog.Infra.Data.EF;
 
 namespace FC.Codeflix.Catalog.IntegrationTests.Infra.Data.EF.UnitOfWork
 {

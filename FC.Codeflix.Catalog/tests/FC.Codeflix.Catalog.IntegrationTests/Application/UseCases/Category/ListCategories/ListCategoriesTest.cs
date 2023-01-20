@@ -2,8 +2,8 @@
 using FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
 using FC.Codeflix.Catalog.Domain.SeedWork;
-using FC.Codeflix.Category.Infra.Data.EF;
-using FC.Codeflix.Category.Infra.Data.EF.Repositories;
+using FC.Codeflix.Catalog.Infra.Data.EF;
+using FC.Codeflix.Catalog.Infra.Data.EF.Repositories;
 using FluentAssertions;
 using UseCase = FC.Codeflix.Catalog.Application.UseCases.Category.ListCategories;
 

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
-namespace FC.Codeflix.Category.Infra.Data.EF.Configurations
+namespace FC.Codeflix.Catalog.Infra.Data.EF.Configurations
 {
     internal class CategoryConfiguration : IEntityTypeConfiguration<DomainEntity.Category>
     {
