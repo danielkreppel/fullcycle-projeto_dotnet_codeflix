@@ -28,6 +28,10 @@
 2. 1 Container for the Test DataBase (MySql)
 3. 1 Container for the Development DataBase (MySql)
 4. Run "docker network create -d bridge service_catalog" (So the API container finds the DB Container. Setup in docker-compose.yml)
+5. Few usefull Docker commands:
+5.1. docker-compose up
+5.2. docker ps
+6. To check the containers running in Visual Studio: View -> Other Windows -> Containers
 
 ### Persistence
 1. MySql Database
