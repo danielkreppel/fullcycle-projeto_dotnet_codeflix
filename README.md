@@ -30,4 +30,4 @@
 
 ### Persistence
 1. MySql Database
-2. Entity Framework Core
+2. Entity Framework Core (https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
