@@ -37,5 +37,5 @@
 1. MySql Database
 2. Entity Framework Core (https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
 3. Migrations in API project. Example to add new migrations: 
-- First setup the environment for the app settings running: $env:ASPNETCORE_ENVIRONMENT='Migrations'
+- First setup the environment for the app settings running: $env:ASPNETCORE_ENVIRONMENT='Migrations' (to use appsettings.Migrations.json)
 - Then run: dotnet ef migrations add \<name\> -s .\FC.Codeflix.Catalog.Api\ -p .\FC.Codeflix.Catalog.Infra.Data.EF\ -v
