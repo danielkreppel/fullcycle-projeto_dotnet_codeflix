@@ -29,13 +29,13 @@
 3. 1 Container for the Development DataBase (MySql)
 4. Run "docker network create -d bridge service_catalog" (So the API container finds the DB Container. Setup in docker-compose.yml)
 5. Few usefull Docker commands:
-5.1. docker-compose up
-5.2. docker ps
+- docker-compose up
+- docker ps
 6. To check the containers running in Visual Studio: View -> Other Windows -> Containers
 
 ### Persistence
 1. MySql Database
 2. Entity Framework Core (https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
 3. Migrations in API project. Example to add new migrations: 
-3.1 First setup the environment for the app settings running: $env:ASPNETCORE_ENVIRONMENT='Migrations'
-3.2 Then run: dotnet ef migrations add \<name\> -s .\FC.Codeflix.Catalog.Api\ -p .\FC.Codeflix.Catalog.Infra.Data.EF\ -v
+- First setup the environment for the app settings running: $env:ASPNETCORE_ENVIRONMENT='Migrations'
+- Then run: dotnet ef migrations add \<name\> -s .\FC.Codeflix.Catalog.Api\ -p .\FC.Codeflix.Catalog.Infra.Data.EF\ -v
