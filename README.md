@@ -27,3 +27,7 @@
 2. 1 Container for the Test DataBase (MySql)
 3. 1 Container for the Development DataBase (MySql)
 4. Run "docker network create -d bridge service_catalog" (So the API container finds the DB Container. Setup in docker-compose.yml)
+
+### Persistence
+1. MySql Database
+2. Entity Framework Core
