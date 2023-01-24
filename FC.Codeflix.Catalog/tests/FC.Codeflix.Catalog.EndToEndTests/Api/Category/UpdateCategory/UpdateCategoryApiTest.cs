@@ -1,4 +1,5 @@
-﻿using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
+﻿using FC.Codeflix.Catalog.Api.ApiModels.Category;
+using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
 using FC.Codeflix.Catalog.Application.UseCases.Category.UpdateCategory;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
@@ -24,7 +25,7 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             var categoriesListSample = _fixture.GetCategoriesListSample(20);
             await _fixture.Persistence.InsertList(categoriesListSample);
             var categorySample = categoriesListSample[10];
-            var input = _fixture.GetInputSample(categorySample.Id);
+            var input = _fixture.GetInputSample();
 
             var (response, output) = await _fixture.ApiClient.Put<CategoryModelOutput>($"/Categories/{categorySample.Id}", input);
 
@@ -51,7 +52,7 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             var categoriesListSample = _fixture.GetCategoriesListSample(20);
             await _fixture.Persistence.InsertList(categoriesListSample);
             var categorySample = categoriesListSample[10];
-            var input = new UpdateCategoryInput(categorySample.Id, _fixture.GetValidCategoryName());
+            var input = new UpdateCategoryApiInput(_fixture.GetValidCategoryName());
 
             var (response, output) = await _fixture.ApiClient.Put<CategoryModelOutput>($"/Categories/{categorySample.Id}", input);
 
@@ -78,7 +79,7 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             var categoriesListSample = _fixture.GetCategoriesListSample(20);
             await _fixture.Persistence.InsertList(categoriesListSample);
             var categorySample = categoriesListSample[10];
-            var input = new UpdateCategoryInput(categorySample.Id, _fixture.GetValidCategoryName(), _fixture.GetValidCategoryDescription());
+            var input = new UpdateCategoryApiInput(_fixture.GetValidCategoryName(), _fixture.GetValidCategoryDescription());
 
             var (response, output) = await _fixture.ApiClient.Put<CategoryModelOutput>($"/Categories/{categorySample.Id}", input);
 
@@ -105,7 +106,7 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             var categoriesListSample = _fixture.GetCategoriesListSample(20);
             await _fixture.Persistence.InsertList(categoriesListSample);
             var randomGuid = Guid.NewGuid();
-            var input = _fixture.GetInputSample(randomGuid);
+            var input = _fixture.GetInputSample();
 
             var (response, output) = await _fixture.ApiClient.Put<ProblemDetails>($"/Categories/{randomGuid}", input);
 
@@ -125,12 +126,11 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             nameof(UpdateCategoryApiTestDataGenerator.GetInvalidInputs), 
             MemberType = typeof(UpdateCategoryApiTestDataGenerator))
         ]
-        public async Task ErrorWhenCantInstantiateAggregate(UpdateCategoryInput input, string expectedDetail)
+        public async Task ErrorWhenCantInstantiateAggregate(UpdateCategoryApiInput input, string expectedDetail)
         {
             var categoriesListSample = _fixture.GetCategoriesListSample(20);
             await _fixture.Persistence.InsertList(categoriesListSample);
             var exampleCategory = categoriesListSample[10];
-            input.Id = exampleCategory.Id;
 
             var (response, output) = await _fixture.ApiClient.Put<ProblemDetails>($"/Categories/{exampleCategory.Id}", input);
 
