@@ -2,14 +2,14 @@
 {
     public abstract class PaginatedListOutput<TOuputItem>
     {
-        public int Page { get; set; }
+        public int CurrentPage { get; set; }
         public int PerPage { get; set; }
         public int Total { get; set; }
         public IReadOnlyList<TOuputItem> Items { get; set; }
 
-        protected PaginatedListOutput(int page, int perPage, int total, IReadOnlyList<TOuputItem> items)
+        protected PaginatedListOutput(int currentPage, int perPage, int total, IReadOnlyList<TOuputItem> items)
         {
-            Page = page;
+            CurrentPage = currentPage;
             PerPage = perPage;
             Total = total;
             Items = items;

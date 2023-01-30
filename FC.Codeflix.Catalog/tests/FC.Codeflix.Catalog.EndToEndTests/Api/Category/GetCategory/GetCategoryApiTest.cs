@@ -1,4 +1,5 @@
-﻿using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
+﻿using FC.Codeflix.Catalog.Api.ApiModels.Response;
+using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
 using FC.Codeflix.Catalog.Domain.Entity;
 using FC.Codeflix.Catalog.EndToEndTests.Extensions.DateTime;
 using FluentAssertions;
@@ -26,16 +27,17 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.GetCategory
             await _fixture.Persistence.InsertList(categoriesListSample);
             var categorySample = categoriesListSample[10];
 
-            var (response, output) = await _fixture.ApiClient.Get<CategoryModelOutput>($"/Categories/{categorySample.Id}");
+            var (response, output) = await _fixture.ApiClient.Get<ApiResponse<CategoryModelOutput>>($"/Categories/{categorySample.Id}");
 
             response.Should().NotBeNull();
             response.StatusCode.Should().Be((HttpStatusCode)StatusCodes.Status200OK);
             output.Should().NotBeNull();
-            output!.Id.Should().Be(categorySample.Id);
-            output.Name.Should().Be(categorySample.Name);
-            output.Description.Should().Be(categorySample.Description);
-            output.IsActive.Should().Be(categorySample.IsActive);
-            output.CreatedAt.TrimMilliseconds().Should().Be(categorySample.CreatedAt.TrimMilliseconds());
+            output!.Data.Should().NotBeNull();
+            output.Data.Id.Should().Be(categorySample.Id);
+            output.Data.Name.Should().Be(categorySample.Name);
+            output.Data.Description.Should().Be(categorySample.Description);
+            output.Data.IsActive.Should().Be(categorySample.IsActive);
+            output.Data.CreatedAt.TrimMilliseconds().Should().Be(categorySample.CreatedAt.TrimMilliseconds());
         }
 
         [Fact(DisplayName = nameof(ErrorWhenNotFound))]

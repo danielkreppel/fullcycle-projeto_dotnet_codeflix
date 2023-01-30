@@ -47,7 +47,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.Category.ListCategories
             var output = await useCase.Handle(input, CancellationToken.None);
 
             output.Should().NotBeNull();
-            output.Page.Should().Be(outputRepositorySearch.CurrentPage);
+            output.CurrentPage.Should().Be(outputRepositorySearch.CurrentPage);
             output.PerPage.Should().Be(outputRepositorySearch.PerPage);
             output.Total.Should().Be(outputRepositorySearch.Total);
             output.Items.Should().HaveCount(outputRepositorySearch.Items.Count);
@@ -109,7 +109,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.Category.ListCategories
             var output = await useCase.Handle(input, CancellationToken.None);
 
             output.Should().NotBeNull();
-            output.Page.Should().Be(outputRepositorySearch.CurrentPage);
+            output.CurrentPage.Should().Be(outputRepositorySearch.CurrentPage);
             output.PerPage.Should().Be(outputRepositorySearch.PerPage);
             output.Total.Should().Be(outputRepositorySearch.Total);
             output.Items.Should().HaveCount(outputRepositorySearch.Items.Count);
@@ -166,7 +166,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.Category.ListCategories
             var output = await useCase.Handle(input, CancellationToken.None);
 
             output.Should().NotBeNull();
-            output.Page.Should().Be(outputRepositorySearch.CurrentPage);
+            output.CurrentPage.Should().Be(outputRepositorySearch.CurrentPage);
             output.PerPage.Should().Be(outputRepositorySearch.PerPage);
             output.Total.Should().Be(0);
             output.Items.Should().HaveCount(0);

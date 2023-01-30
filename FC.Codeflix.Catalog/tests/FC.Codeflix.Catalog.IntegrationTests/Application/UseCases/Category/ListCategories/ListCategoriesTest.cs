@@ -39,7 +39,7 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Lis
 
             output.Should().NotBeNull();
             output.Items.Should().NotBeNull();
-            output.Page.Should().Be(input.Page);
+            output.CurrentPage.Should().Be(input.Page);
             output.PerPage.Should().Be(input.PerPage);
             output.Total.Should().Be(categorySampleList.Count);
             output.Items.Should().HaveCount(categorySampleList.Count);
@@ -72,7 +72,7 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Lis
 
             output.Should().NotBeNull();
             output.Items.Should().NotBeNull();
-            output.Page.Should().Be(input.Page);
+            output.CurrentPage.Should().Be(input.Page);
             output.PerPage.Should().Be(input.PerPage);
             output.Total.Should().Be(0);
             output.Items.Should().HaveCount(0);
@@ -102,7 +102,7 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Lis
 
             output.Should().NotBeNull();
             output.Items.Should().NotBeNull();
-            output.Page.Should().Be(input.Page);
+            output.CurrentPage.Should().Be(input.Page);
             output.PerPage.Should().Be(input.PerPage);
             output.Total.Should().Be(qttyCategoryToGenerate);
             output.Items.Should().HaveCount(expectedQttyItems);
@@ -151,7 +151,7 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Lis
 
             output.Should().NotBeNull();
             output.Items.Should().NotBeNull();
-            output.Page.Should().Be(input.Page);
+            output.CurrentPage.Should().Be(input.Page);
             output.PerPage.Should().Be(input.PerPage);
             output.Total.Should().Be(expectedQttyTotalItems);
             output.Items.Should().HaveCount(expectedQttyItemsReturned);
@@ -200,7 +200,7 @@ namespace FC.Codeflix.Catalog.IntegrationTests.Application.UseCases.Category.Lis
 
             output.Should().NotBeNull();
             output.Items.Should().NotBeNull();
-            output.Page.Should().Be(input.Page);
+            output.CurrentPage.Should().Be(input.Page);
             output.PerPage.Should().Be(input.PerPage);
             output.Total.Should().Be(categorySampleList.Count());
             output.Items.Should().HaveCount(categorySampleList.Count());

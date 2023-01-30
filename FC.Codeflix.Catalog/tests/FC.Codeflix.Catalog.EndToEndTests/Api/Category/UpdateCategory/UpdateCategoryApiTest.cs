@@ -1,4 +1,5 @@
 ﻿using FC.Codeflix.Catalog.Api.ApiModels.Category;
+using FC.Codeflix.Catalog.Api.ApiModels.Response;
 using FC.Codeflix.Catalog.Application.UseCases.Category.Common;
 using FC.Codeflix.Catalog.Application.UseCases.Category.UpdateCategory;
 using FluentAssertions;
@@ -27,16 +28,17 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             var categorySample = categoriesListSample[10];
             var input = _fixture.GetInputSample();
 
-            var (response, output) = await _fixture.ApiClient.Put<CategoryModelOutput>($"/Categories/{categorySample.Id}", input);
+            var (response, output) = await _fixture.ApiClient.Put<ApiResponse<CategoryModelOutput>>($"/Categories/{categorySample.Id}", input);
 
             response.Should().NotBeNull();
             response.StatusCode.Should().Be((HttpStatusCode)StatusCodes.Status200OK);
 
             output.Should().NotBeNull();
-            output!.Id.Should().Be(categorySample.Id);
-            output!.Name.Should().Be(input.Name);
-            output.Description.Should().Be(input.Description);
-            output.IsActive.Should().Be(input.IsActive!.Value);
+            output!.Data.Should().NotBeNull();
+            output.Data.Id.Should().Be(categorySample.Id);
+            output.Data.Name.Should().Be(input.Name);
+            output.Data.Description.Should().Be(input.Description);
+            output.Data.IsActive.Should().Be(input.IsActive!.Value);
 
             var dbCategory = await _fixture.Persistence.GetById(categorySample.Id);
             dbCategory.Should().NotBeNull();
@@ -54,16 +56,17 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             var categorySample = categoriesListSample[10];
             var input = new UpdateCategoryApiInput(_fixture.GetValidCategoryName());
 
-            var (response, output) = await _fixture.ApiClient.Put<CategoryModelOutput>($"/Categories/{categorySample.Id}", input);
+            var (response, output) = await _fixture.ApiClient.Put<ApiResponse<CategoryModelOutput>>($"/Categories/{categorySample.Id}", input);
 
             response.Should().NotBeNull();
             response.StatusCode.Should().Be((HttpStatusCode)StatusCodes.Status200OK);
 
             output.Should().NotBeNull();
-            output!.Id.Should().Be(categorySample.Id);
-            output!.Name.Should().Be(input.Name);
-            output.Description.Should().Be(categorySample.Description);
-            output.IsActive.Should().Be(categorySample.IsActive);
+            output!.Data.Should().NotBeNull();
+            output.Data.Id.Should().Be(categorySample.Id);
+            output.Data.Name.Should().Be(input.Name);
+            output.Data.Description.Should().Be(categorySample.Description);
+            output.Data.IsActive.Should().Be(categorySample.IsActive);
 
             var dbCategory = await _fixture.Persistence.GetById(categorySample.Id);
             dbCategory.Should().NotBeNull();
@@ -81,16 +84,17 @@ namespace FC.Codeflix.Catalog.EndToEndTests.Api.Category.UpdateCategory
             var categorySample = categoriesListSample[10];
             var input = new UpdateCategoryApiInput(_fixture.GetValidCategoryName(), _fixture.GetValidCategoryDescription());
 
-            var (response, output) = await _fixture.ApiClient.Put<CategoryModelOutput>($"/Categories/{categorySample.Id}", input);
+            var (response, output) = await _fixture.ApiClient.Put<ApiResponse<CategoryModelOutput>>($"/Categories/{categorySample.Id}", input);
 
             response.Should().NotBeNull();
             response.StatusCode.Should().Be((HttpStatusCode)StatusCodes.Status200OK);
 
             output.Should().NotBeNull();
-            output!.Id.Should().Be(categorySample.Id);
-            output!.Name.Should().Be(input.Name);
-            output.Description.Should().Be(input.Description);
-            output.IsActive.Should().Be(categorySample.IsActive);
+            output!.Data.Should().NotBeNull();
+            output.Data.Id.Should().Be(categorySample.Id);
+            output.Data.Name.Should().Be(input.Name);
+            output.Data.Description.Should().Be(input.Description);
+            output.Data.IsActive.Should().Be(categorySample.IsActive);
 
             var dbCategory = await _fixture.Persistence.GetById(categorySample.Id);
             dbCategory.Should().NotBeNull();
