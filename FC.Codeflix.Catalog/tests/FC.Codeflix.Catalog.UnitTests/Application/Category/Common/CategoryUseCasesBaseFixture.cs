@@ -31,8 +31,6 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.Category.Common
             return categoryDescription;
         }
 
-        public bool GetRandomBoolean() => new Random().NextDouble() < 0.5;
-
         public DomainEntity.Category GetValidCategorySample()
         {
             return new(GetValidCategoryName(), GetValidCategoryDescription(), GetRandomBoolean());

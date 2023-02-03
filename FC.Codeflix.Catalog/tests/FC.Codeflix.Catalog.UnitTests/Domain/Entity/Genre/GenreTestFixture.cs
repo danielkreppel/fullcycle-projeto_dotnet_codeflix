@@ -12,6 +12,13 @@ namespace FC.Codeflix.Catalog.UnitTests.Domain.Entity.Genre
     {
         public string GetValidName() => Faker.Commerce.Categories(1)[0];
 
-        public DomainEntity.Genre GetExampleGenre(bool isActive = true) => new DomainEntity.Genre(GetValidName(), isActive);
+        public DomainEntity.Genre GetExampleGenre(bool isActive = true, List<Guid>? categoriesIds = null) 
+        { 
+            var genre = new DomainEntity.Genre(GetValidName(), isActive);
+            if (categoriesIds != null)
+                categoriesIds.ForEach(c => genre.AddCategory(c));
+
+            return genre;
+        }
     }
 }

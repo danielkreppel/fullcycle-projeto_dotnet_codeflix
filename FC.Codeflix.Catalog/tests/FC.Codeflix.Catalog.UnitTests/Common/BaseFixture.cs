@@ -15,5 +15,7 @@ namespace FC.Codeflix.Catalog.UnitTests.Common
         {
             Faker = new Faker("pt_BR");
         }
+
+        public bool GetRandomBoolean() => new Random().NextDouble() < 0.5;
     }
 }
