@@ -20,7 +20,24 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.Genre.CreateGenre
                 );
         }
 
+        public CreateGenreInput GetExampleInputWithCategories()
+        {
+            var numberOfCategories = new Random().Next(1, 10);
+            var categoriesIds = Enumerable.Range(1, numberOfCategories).Select(_ => Guid.NewGuid()).ToList();
+
+            return new CreateGenreInput(
+                GetValidGenreName(),
+                GetRandomBoolean(),
+                categoriesIds
+                );
+        }
+
         public Mock<IGenreRepository> GetGenreRepositoryMock()
+        {
+            return new();
+        }
+
+        public Mock<ICategoryRepository> GetCategoryRepositoryMock()
         {
             return new();
         }

@@ -7,11 +7,13 @@ namespace FC.Codeflix.Catalog.Application.UseCases.Genre.CreateGenre
     {
         public string Name { get; set; }
         public bool IsActive { get; set; }
+        public List<Guid>? CategoriesIds { get; set; }
 
-        public CreateGenreInput(string name, bool isActive)
+        public CreateGenreInput(string name, bool isActive, List<Guid>? categoriesIds = null)
         {
             Name = name;
-            IsActive = isActive;
+            IsActive = isActive;            
+            CategoriesIds = categoriesIds;
         }
     }
 }

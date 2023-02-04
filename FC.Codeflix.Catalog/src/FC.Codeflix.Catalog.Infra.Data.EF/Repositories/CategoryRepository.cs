@@ -2,7 +2,6 @@
 using FC.Codeflix.Catalog.Domain.Repository;
 using FC.Codeflix.Catalog.Domain.SeedWork.SearchableRepository;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
 
