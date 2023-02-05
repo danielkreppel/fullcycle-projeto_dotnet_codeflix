@@ -37,7 +37,6 @@ namespace FC.Codeflix.Catalog.Domain.Entity
             Name = name;
             Validate();
         }
-        private void Validate() => DomainValidation.NotNullOrEmpty(Name, nameof(Name));
 
         public void AddCategory(Guid categoryId)
         {
@@ -56,5 +55,7 @@ namespace FC.Codeflix.Catalog.Domain.Entity
             _categories.Clear();
             Validate();
         }
+
+        private void Validate() => DomainValidation.NotNullOrEmpty(Name, nameof(Name));
     }
 }

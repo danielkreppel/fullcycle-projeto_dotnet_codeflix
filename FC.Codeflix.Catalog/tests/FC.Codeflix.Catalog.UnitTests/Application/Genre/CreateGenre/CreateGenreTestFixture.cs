@@ -20,6 +20,14 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.Genre.CreateGenre
                 );
         }
 
+        public CreateGenreInput GetExampleInput(string? name)
+        {
+            return new CreateGenreInput(
+                name,
+                GetRandomBoolean()
+                );
+        }
+
         public CreateGenreInput GetExampleInputWithCategories()
         {
             var numberOfCategories = new Random().Next(1, 10);

@@ -1,4 +1,5 @@
 ﻿using FC.Codeflix.Catalog.Application.Exceptions;
+using FC.Codeflix.Catalog.Domain.Exceptions;
 using FluentAssertions;
 using Moq;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
@@ -98,6 +99,28 @@ namespace FC.Codeflix.Catalog.UnitTests.Application.Genre.CreateGenre
                 It.IsAny<List<Guid>>(),
                 It.IsAny<CancellationToken>())
             , Times.Once);
+
+        }
+
+        [Theory(DisplayName = nameof(ThrowWhenNameIsInvalid))]
+        [Trait("Application", "CreateGenre - UseCases")]
+        [InlineData("")]
+        [InlineData(null)]
+        [InlineData("   ")]
+        public async Task ThrowWhenNameIsInvalid(string name)
+        {
+            var input = _fixture.GetExampleInput(name);
+
+            var genreRepositoryMock = _fixture.GetGenreRepositoryMock();
+            var categoryRepositoryMock = _fixture.GetCategoryRepositoryMock();
+            var unitOfWorkMock = _fixture.GetUnitOfWorkMock();
+
+            var useCase = new UseCase.CreateGenre(genreRepositoryMock.Object, unitOfWorkMock.Object, categoryRepositoryMock.Object);
+
+            var action = async () => await useCase.Handle(input, CancellationToken.None);
+
+            await action.Should().ThrowAsync<EntityValidationException>()
+                .WithMessage($"Name should not be empty or null");
 
         }
     }

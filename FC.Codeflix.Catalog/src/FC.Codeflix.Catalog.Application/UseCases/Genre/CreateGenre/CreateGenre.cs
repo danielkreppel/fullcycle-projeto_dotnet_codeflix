@@ -1,6 +1,7 @@
 ﻿using FC.Codeflix.Catalog.Application.Exceptions;
 using FC.Codeflix.Catalog.Application.Interfaces;
 using FC.Codeflix.Catalog.Application.UseCases.Genre.Common;
+using FC.Codeflix.Catalog.Domain.Entity;
 using FC.Codeflix.Catalog.Domain.Repository;
 using DomainEntity = FC.Codeflix.Catalog.Domain.Entity;
 
@@ -23,23 +24,26 @@ namespace FC.Codeflix.Catalog.Application.UseCases.Genre.CreateGenre
         {
             var genre = new DomainEntity.Genre(request.Name, request.IsActive);
 
-            if (request.CategoriesIds != null && request.CategoriesIds.Count > 0)
+            if ((request.CategoriesIds?.Count ?? 0) > 0)
             {
-                var persistedCategoryIds = await _categoryRepository.GetIdsListByIds(request.CategoriesIds, cancellationToken);
-                if (persistedCategoryIds.Count < request.CategoriesIds.Count)
-                {
-                    var notFoundIds = request.CategoriesIds.FindAll(id => !persistedCategoryIds.Contains(id));
-                    throw new RelatedAggregateException($"Related category id (or ids) not found: '{string.Join(", ", notFoundIds)}'");
-                }
-                    
-                request.CategoriesIds.ForEach(genre.AddCategory);
+                await ValidateCategoriesIds(request, cancellationToken);
+                request.CategoriesIds?.ForEach(genre.AddCategory);
             }
                 
-
             await _genreRepository.Insert(genre, CancellationToken.None);
             await _uniteOfWork.Commit(CancellationToken.None);
 
             return GenreModelOutput.FromGenre(genre);
+        }
+
+        private async Task ValidateCategoriesIds(CreateGenreInput request, CancellationToken cancellationToken)
+        {
+            var persistedCategoryIds = await _categoryRepository.GetIdsListByIds(request.CategoriesIds!, cancellationToken);
+            if (persistedCategoryIds.Count < request.CategoriesIds!.Count)
+            {
+                var notFoundIds = request.CategoriesIds.FindAll(id => !persistedCategoryIds.Contains(id));
+                throw new RelatedAggregateException($"Related category id (or ids) not found: '{string.Join(", ", notFoundIds)}'");
+            }
         }
     }
 }

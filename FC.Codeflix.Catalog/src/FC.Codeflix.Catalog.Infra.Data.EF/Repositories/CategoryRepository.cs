@@ -73,5 +73,10 @@ namespace FC.Codeflix.Catalog.Infra.Data.EF.Repositories
         {
             await Task.FromResult(_categories.Update(aggregate));
         }
+
+        public Task<IReadOnlyList<Guid>> GetIdsListByIds(List<Guid> ids, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
